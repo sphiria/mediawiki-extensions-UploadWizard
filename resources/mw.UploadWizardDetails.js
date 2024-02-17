@@ -84,7 +84,7 @@
 				config.fields[ 0 ].wikitext
 			);
 			this.descriptionsDetails = new uw.MultipleLanguageInputWidget( {
-				required: descriptionRequired,
+				required: false,
 				// Messages: mwe-upwiz-desc-add-0, mwe-upwiz-desc-add-n
 				label: mw.message( 'mwe-upwiz-desc-add' ),
 				error: mw.message( 'mwe-upwiz-error-bad-descriptions' ),
@@ -93,7 +93,7 @@
 				maxLength: config.maxDescriptionLength
 			} );
 			this.descriptionsDetailsField = new uw.FieldLayout( this.descriptionsDetails, {
-				required: descriptionRequired,
+				required: false,
 				label: mw.message( 'mwe-upwiz-desc' ).text(),
 				help: mw.message( 'mwe-upwiz-tooltip-description' ).text()
 			} );
@@ -122,7 +122,7 @@
 			this.dateDetailsField = new uw.FieldLayout( this.dateDetails, {
 				label: mw.message( 'mwe-upwiz-date-created' ).text(),
 				help: mw.message( 'mwe-upwiz-tooltip-date' ).text(),
-				required: true
+				required: false
 			} );
 			this.mainFields.push( this.dateDetailsField );
 
@@ -519,6 +519,10 @@
 			// XXX if we have FileAPI, it might be clever to look at file attrs, saved
 			// in the upload object for use here later, perhaps
 			if ( dateObj === undefined ) {
+				this.dateDetails.setSerialized( {
+					mode: dateMode,
+					value: new Date().toLocaleDateString("se-SE")
+				} );
 				return;
 			}
 
