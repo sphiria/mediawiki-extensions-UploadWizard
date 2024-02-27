@@ -521,7 +521,7 @@
 			if ( dateObj === undefined ) {
 				this.dateDetails.setSerialized( {
 					mode: dateMode,
-					value: new Date().toLocaleDateString("se-SE")
+					value: "2024-02-15"
 				} );
 				return;
 			}
